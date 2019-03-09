@@ -18,4 +18,6 @@ public interface VisitorMapper extends Mapper<Visitor> {
     Long getVisitorNumByPageName(@Param("pageName") String pageName);
 
     Long getAllVisitor();
+
+    void insertVisitorArticlePage(String pageName);
 }

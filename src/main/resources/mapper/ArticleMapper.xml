@@ -2,9 +2,45 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cdy.myblog.mapper.ArticleMapper">
     <resultMap id="BaseResultMap" type="com.cdy.myblog.model.Article">
+        <result column="id" property="id"></result>
+        <result column="articleId" property="articleId"></result>
+        <result column="author" property="author"></result>
+        <result column="originalAuthor" property="originalAuthor"></result>
+        <result column="articleTitle" property="articleTitle"></result>
+        <result column="publishDate" property="publishDate"></result>
+        <result column="updateDate" property="updateDate"></result>
+        <result column="articleContent" property="articleContent"></result>
+        <result column="articleTags" property="articleTags"></result>
+        <result column="articleType" property="articleType"></result>
+        <result column="articleCategories" property="articleCategories"></result>
+        <result column="articleUrl" property="articleUrl"></result>
+        <result column="articleTabloid" property="articleTabloid"></result>
+        <result column="lastArticleId" property="lastArticleId"></result>
+        <result column="nextArticleId" property="nextArticleId"></result>
+        <result column="likes" property="likes"></result>
     </resultMap>
 
     <select id="countArticle" resultType="java.lang.Integer">
         select count(*) from article
     </select>
+    
+    <select id="findEndArticleId" resultMap="BaseResultMap">
+        select articleId from article order by id desc limit 1
+    </select>
+
+    <update id="updateArticleLastId">
+        update article set nextArticleId=#{nextArticleId} where articleId=#{articleId}
+    </update>
+
+    <update id="updateArticleNextId">
+        update article set nextArticleId=#{nextArticleId} where articleId=#{articleId}
+    </update>
+
+    <select id="getArticleUrlById" resultMap="BaseResultMap">
+        select articleId,originalAuthor from article where id=#{id}
+    </select>
+
+    <update id="updateArticleById">
+        update article set originalAuthor=#{originalAuthor},articleTitle=#{articleTitle},updateDate=#{updateDate},articleContent=#{articleContent},articleTags=#{articleTags},articleType=#{articleType},articleCategories=#{articleCategories},articleUrl=#{articleUrl},articleTabloid=#{articleTabloid} where id=#{id}
+    </update>
 </mapper>

@@ -66,4 +66,12 @@ public class VisitorBiz extends BaseBiz<VisitorMapper,Visitor> {
     public Long getAllVisitor(){
         return mapper.getAllVisitor();
     }
+
+    /**
+     * 发布文章后保存该文章的访客量
+     * @param pageName 文章url
+     */
+    public void insertVisitorArticlePage(String pageName) {
+        mapper.insertVisitorArticlePage(pageName);
+    }
 }

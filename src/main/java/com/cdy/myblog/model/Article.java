@@ -127,7 +127,7 @@ public class Article {
     }
 
     public String getAuthor() {
-        return author;
+        return author ="陈定颖";
     }
 
     public void setAuthor(String author) {

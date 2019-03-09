@@ -21,4 +21,5 @@ public class UserBiz extends BaseBiz<UserMapper,User> {
         return mapper.countUserNum();
     }
 
+
 }

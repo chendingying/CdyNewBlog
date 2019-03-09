@@ -61,13 +61,14 @@
                 async:false,
                 data:{
                 },
-                dataType:"json",
+
                 success:function (data) {
+                    console.log(data);
                     var selectCategories = $('#select-categories');
                     selectCategories.empty();
                     selectCategories.append($('<option class="categoriesOption" value="choose">请选择</option>'));
-                    for(var i=0;i<data.length;i++){
-                        selectCategories.append($('<option class="categoriesOption" value="' + data[i] + '">' + data[i] + '</option>'));
+                    for(var i=0;i<data.data.length;i++){
+                        selectCategories.append($('<option class="categoriesOption" value="' + data.data[i].categoryName + '">' + data.data[i].categoryName + '</option>'));
                     }
                     if(aCategory !== "" && aCategory.length > 0){
                         selectCategories.val(aCategory);

@@ -19,4 +19,8 @@
     <select id="getAllVisitor" resultType="java.lang.Long">
         select visitorNum from visitor where pageName='totalVisitor'
     </select>
+
+    <insert id="insertVisitorArticlePage">
+        insert into visitor(visitorNum,pageName) values(0,#{pageName})
+    </insert>
 </mapper>

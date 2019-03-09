@@ -3,6 +3,7 @@ package com.cdy.myblog.controller;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,5 +47,22 @@ public class BackController {
     public String superadmin(HttpServletRequest request){
         request.getSession().removeAttribute("lastUrl");
         return "superadmin";
+    }
+
+    @GetMapping("/editor")
+    public String editor(HttpServletRequest request){
+        request.getSession().removeAttribute("lastUrl");
+        String id = request.getParameter("id");
+        if(!"".equals(id)){
+            request.getSession().setAttribute("id", id);
+        }
+        return "editor";
+    }
+
+    @GetMapping("/toLogin")
+    public @ResponseBody
+    void toLogin(HttpServletRequest request){
+        //保存跳转页面的url
+        request.getSession().setAttribute("lastUrl", request.getHeader("Referer"));
     }
 }

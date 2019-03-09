@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdy.myblog.mapper.VisitorMapper">
+    <resultMap id="BaseResultMap" type="com.cdy.myblog.model.Visitor">
+    </resultMap>
+
+    <update id="updateVisitorNumByTotalVisitorAndPageName">
+        update visitor set visitorNum=(case pageName when 'totalVisitor' then visitorNum+1 when #{pageName} then visitorNum+1 else visitorNum end)
+    </update>
+
+    <update id="updateVisitorNumByTotalVisitor">
+        update visitor set visitorNum=visitorNum+1 where pageName='totalVisitor'
+    </update>
+
+    <select id="getVisitorNumByPageName" resultType="java.lang.Long">
+        select visitorNum from visitor where pageName=#{pageName}
+    </select>
+    
+    <select id="getAllVisitor" resultType="java.lang.Long">
+        select visitorNum from visitor where pageName='totalVisitor'
+    </select>
+</mapper>

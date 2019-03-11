@@ -1,5 +1,6 @@
 package com.cdy.myblog.biz;
 
+import com.cdy.myblog.component.StringAndArray;
 import com.cdy.myblog.mapper.ArticleMapper;
 import com.cdy.myblog.model.Article;
 import com.cdy.myblog.util.BaseBiz;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -34,6 +36,9 @@ public class ArticleBiz extends BaseBiz<ArticleMapper,Article> {
 
     @Autowired
     VisitorBiz visitorBiz;
+
+    @Autowired
+    ArticleLikesRecordBiz articleLikesRecordBiz;
 
     /**
      * 分页获得所有文章
@@ -74,8 +79,8 @@ public class ArticleBiz extends BaseBiz<ArticleMapper,Article> {
                 article.setOriginalAuthor(article.getAuthor());
             }
             if("".equals(article.getArticleUrl())){
-//                String url = "http://localhost/findArticle?articleId=" + article.getArticleId() + "&originalAuthor=" + article.getOriginalAuthor();
-                String url = "https://www.zhyocean.cn/findArticle?articleId=" + article.getArticleId() + "&originalAuthor=" + article.getOriginalAuthor();
+                String url = "http://localhost/findArticle?articleId=" + article.getArticleId() + "&originalAuthor=" + article.getOriginalAuthor();
+//                String url = "https://www.zhyocean.cn/findArticle?articleId=" + article.getArticleId() + "&originalAuthor=" + article.getOriginalAuthor();
                 article.setArticleUrl(url);
             }
             Article endArticleId = mapper.findEndArticleId();
@@ -147,4 +152,71 @@ public class ArticleBiz extends BaseBiz<ArticleMapper,Article> {
         return articleReturn;
     }
 
+    /**
+     * 通过文章id和原作者获得文章名
+     * @param articleId 文章id
+     * @param originalAuthor 文章原作者
+     * @return 文章名
+     */
+    public Map<String,String> findArticleTitleByArticleIdAndOriginalAuthor(long articleId, String originalAuthor) {
+        Article articleInfo = mapper.findArticleTitleByArticleIdAndOriginalAuthor(articleId, originalAuthor);
+        Map<String, String> articleMap = new HashMap<>();
+        articleMap.put("articleTitle", articleInfo.getArticleTitle());
+        articleMap.put("articleTabloid", articleInfo.getArticleTabloid());
+        return articleMap;
+    }
+
+    public JSONObject getArticleByArticleIdAndOriginalAuthor(long articleId, String originalAuthor, String username) {
+        Article article = mapper.getArticleByArticleIdAndOriginalAuthor(articleId, originalAuthor);
+
+        JSONObject jsonObject = new JSONObject();
+        if(article != null){
+            Article lastArticle = mapper.findArticleByArticleId(article.getLastArticleId());
+            Article nextArticle = mapper.findArticleByArticleId(article.getNextArticleId());
+            jsonObject.put("status","200");
+            jsonObject.put("author",article.getAuthor());
+            jsonObject.put("articleId",articleId);
+            jsonObject.put("originalAuthor",article.getOriginalAuthor());
+            jsonObject.put("articleTitle",article.getArticleTitle());
+            jsonObject.put("publishDate",article.getPublishDate());
+            jsonObject.put("updateDate",article.getUpdateDate());
+            jsonObject.put("articleContent",article.getArticleContent());
+            jsonObject.put("articleTags", StringAndArray.stringToArray(article.getArticleTags()));
+            jsonObject.put("articleType",article.getArticleType());
+            jsonObject.put("articleCategories",article.getArticleCategories());
+            jsonObject.put("articleUrl",article.getArticleUrl());
+            jsonObject.put("likes",article.getLikes());
+            if(username == null){
+                jsonObject.put("isLiked",0);
+            }else {
+                if(articleLikesRecordBiz.isLiked(articleId, originalAuthor,username)){
+                    jsonObject.put("isLiked",1);
+                }else {
+                    jsonObject.put("isLiked",0);
+                }
+            }
+            if(lastArticle != null){
+                jsonObject.put("lastStatus","200");
+                jsonObject.put("lastArticleTitle",lastArticle.getArticleTitle());
+                jsonObject.put("lastArticleUrl","/findArticle?articleId=" + lastArticle.getArticleId() + "&originalAuthor=" + lastArticle.getOriginalAuthor());
+            } else {
+                jsonObject.put("lastStatus","500");
+                jsonObject.put("lastInfo","无");
+            }
+            if(nextArticle != null){
+                jsonObject.put("nextStatus","200");
+                jsonObject.put("nextArticleTitle",nextArticle.getArticleTitle());
+                jsonObject.put("nextArticleUrl","/findArticle?articleId=" + nextArticle.getArticleId() + "&originalAuthor=" + nextArticle.getOriginalAuthor());
+            } else {
+                jsonObject.put("nextStatus","500");
+                jsonObject.put("nextInfo","无");
+            }
+            return jsonObject;
+        } else {
+            jsonObject.put("status","500");
+            jsonObject.put("errorInfo","获取文章信息失败");
+            logger.error("获取文章id " + articleId + " 失败");
+            return jsonObject;
+        }
+    }
 }

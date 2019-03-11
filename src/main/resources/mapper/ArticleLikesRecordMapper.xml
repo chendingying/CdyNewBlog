@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdy.myblog.mapper.ArticleLikesRecordMapper">
+    <resultMap id="BaseResultMap" type="com.cdy.myblog.model.ArticleLikesRecord">
+        <result column="id" property="id" />
+        <result column="articleId" property="articleId" />
+        <result column="originalAuthor" property="originalAuthor" />
+        <result column="likerId" property="likerId" />
+        <result column="likeDate" property="likeDate" />
+    </resultMap>
+
+    <select id="isLiked" resultMap="BaseResultMap">
+        select likeDate from article_likes_record where articleId=#{articleId} and originalAuthor=#{originalAuthor} and likerId=#{likerId}
+    </select>
+
+</mapper>

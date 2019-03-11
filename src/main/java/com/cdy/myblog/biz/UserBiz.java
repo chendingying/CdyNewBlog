@@ -21,5 +21,9 @@ public class UserBiz extends BaseBiz<UserMapper,User> {
         return mapper.countUserNum();
     }
 
+    public int findIdByUsername(String username) {
+        return mapper.findIdByUsername(username);
+    }
+
 
 }

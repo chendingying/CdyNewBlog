@@ -7,4 +7,8 @@
     <select id="countUserNum" resultType="java.lang.Integer">
         select count(*) from user
     </select>
+    
+    <select id="findIdByUsername" resultType="java.lang.Integer">
+        select id from user where username=#{username}
+    </select>
 </mapper>

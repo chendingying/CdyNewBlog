@@ -22,4 +22,10 @@ public interface ArticleMapper extends Mapper<Article> {
     Article getArticleUrlById(int id);
 
     void updateArticleById(Article article);
+
+    Article findArticleTitleByArticleIdAndOriginalAuthor(@Param("articleId") long articleId, @Param("originalAuthor") String originalAuthor);
+
+    Article findArticleByArticleId(@Param("articleId") long articleId);
+
+    Article getArticleByArticleIdAndOriginalAuthor(@Param("articleId") long articleId, @Param("originalAuthor") String originalAuthor);
 }

@@ -89,10 +89,12 @@
     var articles = $('.articles');
     $.each(data, function (index, obj) {
         if(index != (data.length)){
+            var thisArticleUrl = "/findArticle?articleId=" + obj['articleId'] + "&originalAuthor=" + obj['originalAuthor']
+
             var center = $('<div class="center">' +
                 '<header class="article-header">' +
                 '<h1 itemprop="name">' +
-                '<a class="article-title" href="' + obj['thisArticleUrl'] + '" target="_blank">' + obj['articleTitle'] + '</a>' +
+                '<a class="article-title" href="' + thisArticleUrl+ '" target="_blank">' + obj['articleTitle'] + '</a>' +
                 '</h1>' +
                 '<div class="article-meta row">' +
                 '<span class="articleType am-badge am-badge-success">' + obj['articleType'] + '</span>' +
@@ -111,7 +113,7 @@
                 obj['articleTabloid'] +
                 '</div>' +
                 '<div class="read-all">' +
-                '<a href="' + obj['thisArticleUrl'] + '" target="_blank">阅读全文 <i class="am-icon-angle-double-right"></i></a>' +
+                '<a href="' + thisArticleUrl + '" target="_blank">阅读全文 <i class="am-icon-angle-double-right"></i></a>' +
                 '</div>' +
                 '<hr>' +
                 '<div class="article-tags">' +

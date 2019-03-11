@@ -43,4 +43,16 @@
     <update id="updateArticleById">
         update article set originalAuthor=#{originalAuthor},articleTitle=#{articleTitle},updateDate=#{updateDate},articleContent=#{articleContent},articleTags=#{articleTags},articleType=#{articleType},articleCategories=#{articleCategories},articleUrl=#{articleUrl},articleTabloid=#{articleTabloid} where id=#{id}
     </update>
+
+    <select id="findArticleTitleByArticleIdAndOriginalAuthor" resultMap="BaseResultMap">
+        select articleTitle,articleTabloid from article where articleId=#{articleId} and originalAuthor=#{originalAuthor}
+    </select>
+
+    <select id="findArticleByArticleId" resultMap="BaseResultMap">
+        select articleId,originalAuthor,articleTitle from article where articleId=#{articleId}
+    </select>
+
+    <select id="getArticleByArticleIdAndOriginalAuthor" resultMap="BaseResultMap">
+        select * from article where articleId=#{articleId} and originalAuthor=#{originalAuthor}
+    </select>
 </mapper>

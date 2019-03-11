@@ -11,4 +11,6 @@ import tk.mybatis.mapper.common.Mapper;
 public interface UserMapper extends Mapper<User> {
 
     int countUserNum();
+
+    int findIdByUsername(String username);
 }

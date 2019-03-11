@@ -302,8 +302,8 @@
 
     //点击扫描二维码时获取二维码图片
     $('.myCardBtn').click(function () {
-        $('.qq_code').attr("src","https://zhy-myblog.oss-cn-shenzhen.aliyuncs.com/static/img/qq_code.png");
-        $('.weixin_code').attr("src","https://zhy-myblog.oss-cn-shenzhen.aliyuncs.com/static/img/weixin_code.png");
+        $('.qq_code').attr("src","https://cdymyblog.oss-cn-beijing.aliyuncs.com/img/89d490a15145736a526b60a06fe17b4.png");
+        $('.weixin_code').attr("src","https://cdymyblog.oss-cn-beijing.aliyuncs.com/img/6bbfaedc891ba6b367b9b7f0a4ef878.jpg");
     });
 
     ajaxFirst(1);

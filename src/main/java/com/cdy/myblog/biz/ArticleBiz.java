@@ -3,6 +3,7 @@ package com.cdy.myblog.biz;
 import com.cdy.myblog.component.StringAndArray;
 import com.cdy.myblog.mapper.ArticleMapper;
 import com.cdy.myblog.model.Article;
+import com.cdy.myblog.model.User;
 import com.cdy.myblog.util.BaseBiz;
 import com.cdy.myblog.util.Query;
 import com.cdy.myblog.util.TableResultResponse;
@@ -36,6 +37,9 @@ public class ArticleBiz extends BaseBiz<ArticleMapper,Article> {
 
     @Autowired
     VisitorBiz visitorBiz;
+
+    @Autowired
+    UserBiz userBiz;
 
     @Autowired
     ArticleLikesRecordBiz articleLikesRecordBiz;
@@ -75,6 +79,12 @@ public class ArticleBiz extends BaseBiz<ArticleMapper,Article> {
     public JSONObject insertArticle(Article article){
         JSONObject articleReturn = new JSONObject();
         try {
+            User user = userBiz.selectById(1);
+            if(user.getPersonalBrief().equals("1")){
+                articleReturn.put("status",200);
+                articleReturn.put("message","您没有权限发表文章");
+                return articleReturn;
+            }
             if(article == null || "".equals(article.getOriginalAuthor())){
                 article.setOriginalAuthor(article.getAuthor());
             }
@@ -106,6 +116,7 @@ public class ArticleBiz extends BaseBiz<ArticleMapper,Article> {
             articleReturn.put("author",article.getOriginalAuthor());
             //本博客中的URL
             articleReturn.put("articleUrl","/findArticle?articleId=" + article.getArticleId() + "&originalAuthor=" + article.getOriginalAuthor());
+            articleReturn.put("message","发布成功");
             return articleReturn;
         } catch (Exception e){
             articleReturn.put("status",500);

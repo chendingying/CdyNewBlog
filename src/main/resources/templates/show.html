@@ -11,7 +11,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <meta name="keywords" content="博客,个人,学习,IT,生活,陈海洋,程序猿,springboot,java,后端">
 
-    <link rel="icon" type="image/x-icon" href="https://zhy-myblog.oss-cn-shenzhen.aliyuncs.com/static/img/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="https://cdymyblog.oss-cn-beijing.aliyuncs.com/img/e9060e68d6756b94df21c0463b57c8e.jpg">
     <link rel="stylesheet" href="css/editormd/editormd.preview.min.css"/>
     <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/all.css">
@@ -49,12 +49,12 @@
             <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
                 <ul class="am-nav am-nav-pills am-topbar-nav">
                     <li><a class="top_bar" href="/" style="cursor: pointer;"><span class="fa fa-home"></span>&nbsp;首页</a></li>
-                    <li><a class="top_bar" href="/categories" style="cursor: pointer;"><span class="fa fa-th"></span>&nbsp;分类</a></li>
-                    <li><a class="top_bar" href="/archives" style="cursor: pointer;"><span class="fa fa-archive"></span>&nbsp;归档</a></li>
-                    <li><a class="top_bar" href="/tags" style="cursor: pointer;"><span class="fa fa-tags"></span>&nbsp;标签</a></li>
-                    <li><a class="top_bar" href="/update" style="cursor: pointer;"><span class="fa fa-calendar-plus-o"></span>&nbsp;更新</a></li>
-                    <li><a class="top_bar" href="/friendlylink" style="cursor: pointer;"><span class="fa fa-street-view"></span>&nbsp;友链</a></li>
-                    <li><a class="top_bar" href="/aboutme" style="cursor: pointer;"><span class="fa fa-user"></span>&nbsp;关于我</a> </li>
+                    <!--<li><a class="top_bar" href="/categories" style="cursor: pointer;"><span class="fa fa-th"></span>&nbsp;分类</a></li>-->
+                    <!--<li><a class="top_bar" href="/archives" style="cursor: pointer;"><span class="fa fa-archive"></span>&nbsp;归档</a></li>-->
+                    <!--<li><a class="top_bar" href="/tags" style="cursor: pointer;"><span class="fa fa-tags"></span>&nbsp;标签</a></li>-->
+                    <!--<li><a class="top_bar" href="/update" style="cursor: pointer;"><span class="fa fa-calendar-plus-o"></span>&nbsp;更新</a></li>-->
+                    <!--<li><a class="top_bar" href="/friendlylink" style="cursor: pointer;"><span class="fa fa-street-view"></span>&nbsp;友链</a></li>-->
+                    <!--<li><a class="top_bar" href="/aboutme" style="cursor: pointer;"><span class="fa fa-user"></span>&nbsp;关于我</a> </li>-->
                 </ul>
 
                 <div class="am-topbar-right" th:if="${#httpServletRequest.remoteUser}">
@@ -70,12 +70,12 @@
                         </ul>
                     </div>
                 </div>
-                <div class="am-topbar-right" th:unless="${#httpServletRequest.remoteUser}">
-                    <a href="/register" class="am-btn am-btn-primary am-topbar-btn am-btn-sm" style="color: white">注册</a>
-                </div>
-                <div class="am-topbar-right" th:unless="${#httpServletRequest.remoteUser}">
-                    <a href="/login" class="loginBtn am-btn am-btn-primary am-topbar-btn am-btn-sm" style="color: white">登录</a>
-                </div>
+                <!--<div class="am-topbar-right" th:unless="${#httpServletRequest.remoteUser}">-->
+                    <!--<a href="/register" class="am-btn am-btn-primary am-topbar-btn am-btn-sm" style="color: white">注册</a>-->
+                <!--</div>-->
+                <!--<div class="am-topbar-right" th:unless="${#httpServletRequest.remoteUser}">-->
+                    <!--<a href="/login" class="loginBtn am-btn am-btn-primary am-topbar-btn am-btn-sm" style="color: white">登录</a>-->
+                <!--</div>-->
                 <div class="am-topbar-right writing am-hide-md-down">
                     <a  href="/editor" target="_blank" style="text-decoration: none">
                         <img class="am-circle" src="https://zhy-myblog.oss-cn-shenzhen.aliyuncs.com/static/img/writing.png">
@@ -109,24 +109,24 @@
                                 </div>
                             </div>
 
-                        <div class="comment">
-                            <div class="comment-top">
-                                <div class="comment-top-input" th:if="${#httpServletRequest.remoteUser}">
-                                    <textarea id="comment" placeholder="客官，来说两句吧..."></textarea>
-                                </div>
-                                <div class="comment-top-input" th:unless="${#httpServletRequest.remoteUser}">
-                                    <div class="goToLogin">
-                                        &nbsp;&nbsp;&nbsp;<a id="toLogin">登录</a>后才可以发表评论呦...
-                                    </div>
-                                </div>
-                                <div class="commentBtn">
-                                    <button id="commentBtn" type="button" class="am-btn am-btn-secondary">发表评论</button>
-                                </div>
-                            </div>
-                            <div class="comment-bottom">
+                        <!--<div class="comment">-->
+                            <!--<div class="comment-top">-->
+                                <!--<div class="comment-top-input" th:if="${#httpServletRequest.remoteUser}">-->
+                                    <!--<textarea id="comment" placeholder="客官，来说两句吧..."></textarea>-->
+                                <!--</div>-->
+                                <!--<div class="comment-top-input" th:unless="${#httpServletRequest.remoteUser}">-->
+                                    <!--<div class="goToLogin">-->
+                                        <!--&nbsp;&nbsp;&nbsp;<a id="toLogin">登录</a>后才可以发表评论呦...-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="commentBtn">-->
+                                    <!--<button id="commentBtn" type="button" class="am-btn am-btn-secondary">发表评论</button>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="comment-bottom">-->
 
-                            </div>
-                        </div>
+                            <!--</div>-->
+                        <!--</div>-->
                     </div>
                 </div>
             </div>
@@ -134,27 +134,27 @@
     </div>
     <div class="footer">
         <div class="footer am-u-sm-centered">
-            <div class="am-vertical-align" style="text-align: center">
-                <hr>
-                <div class="am-vertical-align-bottom">
-                    <div style="color: #009688">
-                        &copy; 2018 程序猿陈先森 - <i class="fa fa-coffee" style="margin: 0 5px"></i>陈海洋 版权所有
-                    </div>
-                    <div id="footer" style="color: #009688">
-                        总访问量 <span id="totalVisitors"><strong></strong></span> 次  您是本文第 <span id="visitorVolume"><strong></strong></span> 位童鞋
-                    </div>
-                    <div class="webLogo">
-                        <a href="http://www.miitbeian.gov.cn" target="_blank">
-                            蜀ICP备18000229号
-                        </a>
-                    </div>
-                    <div class="webLogo">
-                        <img src="https://zhy-myblog.oss-cn-shenzhen.aliyuncs.com/static/img/webLog.png">
-                        <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51011402000164" target="_blank">
-                            川公网安备 51011402000164号
-                        </a>
-                    </div>
-                </div>
+            <!--<div class="am-vertical-align" style="text-align: center">-->
+                <!--<hr>-->
+                <!--<div class="am-vertical-align-bottom">-->
+                    <!--<div style="color: #009688">-->
+                        <!--&copy; 2018 程序猿陈先森 - <i class="fa fa-coffee" style="margin: 0 5px"></i>陈定颖 版权所有-->
+                    <!--</div>-->
+                    <!--<div id="footer" style="color: #009688">-->
+                        <!--总访问量 <span id="totalVisitors"><strong></strong></span> 次  您是本文第 <span id="visitorVolume"><strong></strong></span> 位童鞋-->
+                    <!--</div>-->
+                    <!--<div class="webLogo">-->
+                        <!--<a href="http://www.miitbeian.gov.cn" target="_blank">-->
+                            <!--蜀ICP备18000229号-->
+                        <!--</a>-->
+                    <!--</div>-->
+                    <!--<div class="webLogo">-->
+                        <!--<img src="https://zhy-myblog.oss-cn-shenzhen.aliyuncs.com/static/img/webLog.png">-->
+                        <!--<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51011402000164" target="_blank">-->
+                            <!--川公网安备 51011402000164号-->
+                        <!--</a>-->
+                    <!--</div>-->
+                <!--</div>-->
             </div>
         </div>
         <div id="sidebar_toggle" class="sidebar_toggle" data-am-offcanvas="{target: '#offCanvas'}">
@@ -170,12 +170,12 @@
                     <div class="sidebar-inner">
                         <div class="site-overview">
                             <div class="img-author" style="text-align: center">
-                                <p style="font-size: large;font-family: 仿宋">微信公众号</p>
+                                <p style="font-size: large;font-family: 仿宋">微信号</p>
                                 <div id="weixin">
-                                    <img class="weixinPublic" src="">
+                                    <img class="weixinPublic" src="https://cdymyblog.oss-cn-beijing.aliyuncs.com/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190319094933.jpg">
                                 </div>
                                 <div class="author-name">
-                                    陈海洋
+                                    陈定颖
                                 </div>
                                 <div class="author-words">
                                     <p>专注于Spring,SpringBoot等后端技术探索</p>
@@ -183,25 +183,25 @@
                                 </div>
 
                             </div>
-                            <div class="site-state" style="opacity: 1; display: block; transform: translateX(0px);">
-                                <div class="site-state-item learn-posts">
-                                    <a href="/archives">
-                                        <span class="archivesNum site-state-item-count"></span>
-                                        <span class="site-state-item-name">日志</span>
-                                    </a>
-                                </div>
-                                <div class="site-state-item learn-categories">
-                                    <a id="site-state-item-a" href="/categories">
-                                        <span class="categoriesNum site-state-item-count"></span>
-                                        <span class="site-state-item-name">分类</span>
-                                    </a>
-                                </div>
-                                <div class="site-state-item learn-tags">
-                                    <a href="/tags">
-                                        <span class="tagsNum site-state-item-count"></span>
-                                        <span class="site-state-item-name">标签</span>
-                                    </a>
-                                </div>
+                            <!--<div class="site-state" style="opacity: 1; display: block; transform: translateX(0px);">-->
+                                <!--<div class="site-state-item learn-posts">-->
+                                    <!--<a href="/archives">-->
+                                        <!--<span class="archivesNum site-state-item-count"></span>-->
+                                        <!--<span class="site-state-item-name">日志</span>-->
+                                    <!--</a>-->
+                                <!--</div>-->
+                                <!--<div class="site-state-item learn-categories">-->
+                                    <!--<a id="site-state-item-a" href="/categories">-->
+                                        <!--<span class="categoriesNum site-state-item-count"></span>-->
+                                        <!--<span class="site-state-item-name">分类</span>-->
+                                    <!--</a>-->
+                                <!--</div>-->
+                                <!--<div class="site-state-item learn-tags">-->
+                                    <!--<a href="/tags">-->
+                                        <!--<span class="tagsNum site-state-item-count"></span>-->
+                                        <!--<span class="site-state-item-name">标签</span>-->
+                                    <!--</a>-->
+                                <!--</div>-->
                             </div>
                             <div class="contact-way">
                                 <span><i class="fa fa-qq">&nbsp;&nbsp;1125694337</i></span>

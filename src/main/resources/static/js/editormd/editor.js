@@ -90,7 +90,7 @@
         var success = $('<div class="success"></div>');
         var successBox = $('<div class="success-box"></div>');
         var successArticleTitle = $('<div class="successArticleTitle"><span>' + data.articleTitle + '</span></div>');
-        var successWord = $('<div class="success-word"><p><i class="am-success am-icon-check-square-o" style="color: #5eb95e"></i> 发布成功</p></div>');
+        var successWord = $('<div class="success-word"><p><i class="am-success am-icon-check-square-o" style="color: #5eb95e"></i><span>' + data.message + '</span></p></div>');
         var successTimeAndUser = $('<div class="success-time-user">' +
             '<p><i class="am-icon-calendar"></i>&nbsp;' + data.updateDate + '&nbsp;&nbsp;&nbsp;&nbsp;<i class="am-icon-user"></i>&nbsp;' + data.author + '</p>' +
             '</div>');

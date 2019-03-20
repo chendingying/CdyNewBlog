@@ -52,7 +52,6 @@ public class VisitorBiz extends BaseBiz<VisitorMapper,Visitor> {
     public JSONObject getVisitorNumByPageName(String pageName) {
         long totalVisitor = mapper.getVisitorNumByPageName("totalVisitor");
         long pageVisitor = mapper.getVisitorNumByPageName(pageName);
-        ObjectRestResponse objectRestResponse = new ObjectRestResponse();
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("totalVisitor", totalVisitor);
         jsonObject.put("pageVisitor", pageVisitor);

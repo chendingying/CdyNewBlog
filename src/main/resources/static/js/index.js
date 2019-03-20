@@ -303,38 +303,38 @@
     //点击扫描二维码时获取二维码图片
     $('.myCardBtn').click(function () {
         $('.qq_code').attr("src","https://cdymyblog.oss-cn-beijing.aliyuncs.com/img/89d490a15145736a526b60a06fe17b4.png");
-        $('.weixin_code').attr("src","https://cdymyblog.oss-cn-beijing.aliyuncs.com/img/6bbfaedc891ba6b367b9b7f0a4ef878.jpg");
+        $('.weixin_code').attr("src","https://cdymyblog.oss-cn-beijing.aliyuncs.com/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190319094933.jpg");
     });
 
     ajaxFirst(1);
 
-    newCommentAjax(1);
-    newLeaveWordAjax(1);
+    // newCommentAjax(1);
+    // newLeaveWordAjax(1);
 
-    //标签云
-    $.ajax({
-        type: 'GET',
-        url: '/findTagsCloud',
-        dataType: 'json',
-        data: {
-        },
-        success: function (data) {
-            if(data['result'].length == 0){
-                var tagCloud = $('.tag-cloud');
-                tagCloud.empty();
-                tagCloud.append($('<h3 class="widget-title">标签云</h3>'));
-                var widgetTagCloud = $('<div class="widget-tag-cloud"><span>暂无标签</span></div>');
-                tagCloud.append(widgetTagCloud);
-                $('#right').append(tagCloud);
-            } else {
-                putInTagsCloud(data);
-            }
-
-        },
-        error: function () {
-            alert("获得标签云失败！");
-        }
-    });
+    // //标签云
+    // $.ajax({
+    //     type: 'GET',
+    //     url: '/findTagsCloud',
+    //     dataType: 'json',
+    //     data: {
+    //     },
+    //     success: function (data) {
+    //         if(data['result'].length == 0){
+    //             var tagCloud = $('.tag-cloud');
+    //             tagCloud.empty();
+    //             tagCloud.append($('<h3 class="widget-title">标签云</h3>'));
+    //             var widgetTagCloud = $('<div class="widget-tag-cloud"><span>暂无标签</span></div>');
+    //             tagCloud.append(widgetTagCloud);
+    //             $('#right').append(tagCloud);
+    //         } else {
+    //             putInTagsCloud(data);
+    //         }
+    //
+    //     },
+    //     error: function () {
+    //         alert("获得标签云失败！");
+    //     }
+    // });
 
     //网站信息
     $.ajax({
